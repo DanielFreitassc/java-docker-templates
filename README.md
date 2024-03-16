@@ -60,3 +60,18 @@ docker run -d nome_da_imagem
 ```
 docker stop nome_do_contêiner
 ```
+# Comando sh para execurar um docker-compose e um Dockerfile 
+build_and_run.sh
+```
+#!/bin/bash
+
+# Iniciar os serviços do docker-compose
+docker-compose up -d
+
+# Construir a imagem da API com Dockerfile
+docker build -t gamesphere .
+
+# Executar a API
+docker run -p 8080:8080 gamesphere
+
+```
