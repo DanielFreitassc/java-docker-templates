@@ -2,7 +2,7 @@
 
 docker-compose.yml
 
-# JDK 21.. 
+# JDK 21
 ```
 FROM ubuntu:latest AS build
 
