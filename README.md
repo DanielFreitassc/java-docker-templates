@@ -69,9 +69,10 @@ build_and_run.sh
 docker-compose up -d
 
 # Construir a imagem da API com Dockerfile
-docker build -t gamesphere .
+docker build -t nome_da_api .
 
 # Executar a API
-docker run -p 8080:8080 gamesphere
+docker run -p 8080:8080 nome_da_api
+
 
 ```
