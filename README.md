@@ -2,25 +2,6 @@
 
 docker-compose.yml
 
-# JDK 21
-```
-FROM ubuntu:latest AS build
-
-RUN apt-get update
-RUN apt-get install openjdk-21-jdk -y
-COPY . .
-
-RUN apt-get install maven -y
-RUN mvn clean install
-
-FROM openjdk:21-jdk-slim 
-EXPOSE 8080
-
-COPY --from=build /target/backend-0.0.1.jar app.jar
-
-ENTRYPOINT [ "java", "-jar", "app.jar" ]
-```
-# JDK 17
 ```
 version: '3.8'
 
@@ -50,6 +31,26 @@ docker-compose down
 
 
 # Dockerfile rodar aplicação backend springboot
+
+# JDK 21
+```
+FROM ubuntu:latest AS build
+
+RUN apt-get update
+RUN apt-get install openjdk-21-jdk -y
+COPY . .
+
+RUN apt-get install maven -y
+RUN mvn clean install
+
+FROM openjdk:21-jdk-slim 
+EXPOSE 8080
+
+COPY --from=build /target/backend-0.0.1.jar app.jar
+
+ENTRYPOINT [ "java", "-jar", "app.jar" ]
+```
+# JDK 17
 ```
 FROM ubuntu:latest AS build
 
