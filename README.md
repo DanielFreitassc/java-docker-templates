@@ -93,7 +93,7 @@ docker-compose up -d
 docker build -t nome_da_api .
 
 # Executar a API
-docker run -p 8080:8080 nome_da_api
+docker run -dti -p 8080:8080
 
 ```
 # Comando pra exutar o sh
