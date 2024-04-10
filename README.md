@@ -75,7 +75,7 @@ docker build -t nome_da_imagem .
 ```
 # Comando para iniciar um Dockerfile
 ```
-docker run -d nome_da_imagem
+docker run -dti -p 8080:8080
 ```
 # Comando para parar um Dockerfile
 ```
