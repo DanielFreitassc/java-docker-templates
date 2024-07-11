@@ -1,6 +1,6 @@
 # Banco de dados  imgens 
 
-```
+```yml
 services:
   postgres:
     container_name: api
@@ -24,9 +24,31 @@ volumes:
 ```
 
 # Dockerfile rodar aplicação backend springboot
+# JDK 22
+```yml
+# Use a base image that includes OpenJDK 22
+FROM eclipse-temurin:22-jdk-alpine
 
-# JDK 21
+# Install Maven
+RUN apk add --no-cache maven
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the Maven project files
+COPY . .
+
+# Run Maven to build the project
+RUN mvn clean install
+
+EXPOSE 8080
+
+RUN cp target/*.jar app.jar
+
+ENTRYPOINT [ "java", "-jar", "app.jar" ]
 ```
+# JDK 21
+```yml
 FROM ubuntu:latest AS build
 
 RUN apt-get update
@@ -44,7 +66,7 @@ COPY --from=build /target/*.jar app.jar
 ENTRYPOINT [ "java", "-jar", "app.jar" ]
 ```
 # JDK 17
-```
+```yml
 FROM ubuntu:latest AS build
 
 RUN apt-get update
