@@ -25,7 +25,7 @@ volumes:
 
 # Dockerfile rodar aplicação backend springboot
 # JDK 22
-```yml
+```dockerfile
 # Use a base image that includes OpenJDK 22
 FROM eclipse-temurin:22-jdk-alpine
 
@@ -48,7 +48,7 @@ RUN cp target/*.jar app.jar
 ENTRYPOINT [ "java", "-jar", "app.jar" ]
 ```
 # JDK 21
-```yml
+```dockerfile
 FROM ubuntu:latest AS build
 
 RUN apt-get update
@@ -66,7 +66,7 @@ COPY --from=build /target/*.jar app.jar
 ENTRYPOINT [ "java", "-jar", "app.jar" ]
 ```
 # JDK 17
-```yml
+```dockerfile
 FROM ubuntu:latest AS build
 
 RUN apt-get update
