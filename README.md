@@ -3,19 +3,26 @@
 docker-compose.yml
 
 ```
-version: '3.8'
-
 services:
   postgres:
-    container_name: banco_de_dados_api
+    container_name: api
     image: postgres
-    ports:
-      - 4000:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=senha1234
-      - POSTGRES_DB=loja
-
+      - POSTGRES_DB=api
+      - POSTGRES_MAX_CONNECTIONS=100
+      - POSTGRES_IDLE_IN_TRANSACTION_SESSION_TIMEOUT=60000
+      - POSTGRES_TCP_KEEPALIVES_IDLE=600
+      - POSTGRES_TCP_KEEPALIVES_INTERVAL=60
+      - POSTGRES_TCP_KEEPALIVES_COUNT=10
+    ports:
+      - 5432:5432
+    volumes:
+      - data:/var/lib/postgresql/data
+    restart: always
+volumes:
+      data:
 ```
 
 # Para subir o container digite
